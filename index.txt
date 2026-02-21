@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>David Leites | Arquitectura</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #777777;
+      --line: #e5e5e5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      border-bottom: 1px solid var(--line);
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+    }
+
+    nav ul li:hover {
+      opacity: 0.6;
+    }
+
+    /* SECCIONES */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 6rem 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* HERO */
+    .hero {
+      padding-top: 9rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* PROYECTOS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      padding: 2rem;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      border-color: var(--text);
+    }
+
+    .project h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .project span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* SOBRE MI */
+    .about p {
+      max-width: 700px;
+      color: var(--muted);
+    }
+
+    /* CV */
+    .cv a {
+      display: inline-block;
+      margin-top: 1rem;
+      border: 1px solid var(--text);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .cv a:hover {
+      background: var(--text);
+      color: white;
+    }
+
+    /* CONTACTO */
+    .contact p {
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">DL</div>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="inicio" class="hero">
+  <h1>David Leites</h1>
+  <p>
+    Estudiante de Arquitectura. Interesado en el diseño espacial,
+    el orden y la relación entre arquitectura, tecnología y sociedad.
+  </p>
+</section>
+
+<section id="proyectos">
+  <h2>Proyectos</h2>
+
+  <div class="projects-grid">
+    <div class="project">
+      <h3>Proyecto Académico I</h3>
+      <span>Vivienda colectiva · 2024</span>
+    </div>
+
+    <div class="project">
+      <h3>Proyecto Académico II</h3>
+      <span>Equipamiento urbano · 2025</span>
+    </div>
+
+    <div class="project">
+      <h3>Exploración conceptual</h3>
+      <span>Investigación espacial</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi" class="about">
+  <h2>Sobre mí</h2>
+  <p>
+    Soy estudiante avanzado de arquitectura, con interés en el
+    pensamiento crítico, la tecnología y el desarrollo de proyectos
+    que busquen equilibrio entre función, forma y contexto.
+  </p>
+</section>
+
+<section id="cv" class="cv">
+  <h2>Currículum</h2>
+  <p>Puedes descargar mi CV en formato PDF.</p>
+  <a href="#">Descargar CV</a>
+</section>
+
+<section id="contacto" class="contact">
+  <h2>Contacto</h2>
+  <p>Email: david@email.com</p>
+  <p>Instagram: @david.arq</p>
+</section>
+
+<footer>
+  © 2026 · David Leites · Arquitectura
+</footer>
+
+</body>
+</html>

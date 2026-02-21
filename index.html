@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leites David | Arquitectura</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-blue: #003d52;
+      --brand-wine: #631e38;
+      --bg-white: #ffffff;
+      --text-dark: #1a1a1a;
+      --text-light: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR FIJO */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--brand-blue);
+      border-bottom: 2px solid var(--brand-wine);
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-nav { height: 40px; }
+
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+
+    nav a:hover { opacity: 0.6; }
+
+    /* PORTADA CON IMAGEN GRANDE (HERO) */
+    .hero-full {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      /* AJUSTADO A PNG */
+      background: url('render.png') no-repeat center center/cover;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.45); /* Un poquito más oscuro para que el blanco brille */
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem); /* Tamaño adaptable */
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra para mejor lectura */
+    }
+
+    /* SECCIÓN DE IDENTIDAD */
+    .identity-section {
+      padding: 8rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .brand-box {
+      background-color: var(--brand-blue);
+      padding: 3rem;
+      border-right: 8px solid var(--brand-wine);
+    }
+
+    .brand-box img { width: 150px; height: auto; }
+
+    .identity-text h2 { font-size: 2.5rem; color: var(--brand-blue); }
+    .identity-text .tagline { color: var(--brand-wine); letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
+
+    /* PROYECTOS */
+    .projects { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .card { border: 1px solid #eee; transition: 0.3s; cursor: pointer; }
+    .card:hover { transform: translateY(-10px); border-color: var(--brand-wine); }
+    .card-img { height: 200px; background: #f0f0f0; }
+    .card-info { padding: 1.5rem; }
+
+    footer { text-align: center; padding: 4rem; color: #aaa; font-size: 0.7rem; letter-spacing: 1px;}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .identity-section { flex-direction: column; text-align: center; padding: 4rem 2rem; }
+      .brand-box { border-right: none; border-bottom: 8px solid var(--brand-wine); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <img src="logo.png" alt="LD" class="logo-nav">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="inicio" class="hero-full">
+  <div class="hero-image"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Leites David</h1>
+    <p style="letter-spacing: 4px; text-transform: uppercase; opacity: 0.9; font-weight: 300;">Arquitectura & Diseño</p>
+  </div>
+</section>
+
+<section id="perfil" class="identity-section">
+  <div class="brand-box">
+    <img src="logo.png" alt="Logo LD">
+  </div>
+  <div class="identity-text">
+    <div class="tagline">Estudiante de Arquitectura</div>
+    <h2>Orden e Identidad</h2>
+    <p>Exploración del diseño espacial y la tectónica como herramientas para construir sentido.</p>
+  </div>
+</section>
+
+<section id="proyectos" class="projects">
+  <h2 style="font-weight: 300; font-size: 2rem; color: var(--brand-blue);">Trabajos Seleccionados</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-img"></div>
+      <div class="card-info"><h3>Proyecto Académico 01</h3><span>Vivienda / 2024</span></div>
+    </div>
+    <div class="card">
+      <div class="card-img"></div>
+      <div class="card-info"><h3>Proyecto Académico 02</h3><span>Equipamiento / 2025</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 · LEITES DAVID · ESTUDIANTE DE ARQUITECTURA</footer>
+
+</body>
+</html>
