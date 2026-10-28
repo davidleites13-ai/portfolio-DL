@@ -34,7 +34,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: var(--brand-blue); /* Azul sólido para igualar el logo */
+      background: var(--brand-blue);
       border-bottom: 2px solid var(--brand-wine);
       z-index: 1000;
     }
@@ -147,10 +147,9 @@
       z-index: -1;
     }
 
-    /* EL ARREGLO DEL LOGO TRANSPARENTE */
     .brand-box img { 
       display: block;
-      background-color: var(--brand-blue); /* Fondo azul generado por código */
+      background-color: var(--brand-blue);
       width: 150px; 
       height: 150px; 
       object-fit: scale-down;
@@ -182,9 +181,9 @@
       font-weight: 300;
     }
 
-    /* SECCIÓN PROYECTO (Centro Metropolitano) */
+    /* SECCIÓN PROYECTOS */
     .projects { 
-      padding: 5rem 2rem 10rem 2rem; 
+      padding: 5rem 2rem 5rem 2rem; 
       max-width: 1200px; 
       margin: auto; 
     }
@@ -272,6 +271,85 @@
       filter: grayscale(0%);
     }
 
+    /* ESTILOS PARA EL FLIPBOOK / VISOR DE LÁMINAS */
+    .flipbook-container-wrapper {
+      text-align: center;
+    }
+
+    .flipbook-viewer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      margin: 2rem 0 1rem 0;
+      background: #111;
+      border-radius: 4px;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .book-pages {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 10; /* Ajustado para láminas apaisadas de portafolio */
+      background: #222;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .page {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+      transform: scale(0.98);
+    }
+
+    .page.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .flip-btn {
+      background: rgba(0, 61, 82, 0.8);
+      border: 1px solid var(--brand-wine);
+      color: #fff;
+      font-size: 1.5rem;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.2s;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .flip-btn:hover {
+      background: var(--brand-wine);
+      transform: scale(1.05);
+    }
+
+    .flipbook-counter {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
     /* VISOR DE IMÁGENES (LIGHTBOX) */
     .lightbox {
       display: none;
@@ -327,6 +405,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       border-top: 4px solid var(--brand-wine);
+      margin-top: 5rem;
     }
 
     /* RESPONSIVE */
@@ -350,6 +429,8 @@
       .galeria-grid { grid-template-columns: 1fr; }
       .img-item:nth-child(1) { grid-column: 1 / 2; height: 300px; }
       .lightbox .close { top: 15px; right: 20px; font-size: 35px; }
+      .flipbook-viewer { padding: 10px; gap: 10px; }
+      .flip-btn { width: 35px; height: 35px; font-size: 1rem; }
     }
   </style>
 </head>
@@ -362,6 +443,7 @@
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#perfil">Perfil</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#flipbook-section">Portafolio PDF</a></li>
     </ul>
   </nav>
 </header>
@@ -405,6 +487,49 @@
   </div>
 </section>
 
+<!-- SECCIÓN FLIPBOOK / PORTAFOLIO PDF COMPLETO -->
+<section id="flipbook-section" class="projects">
+  <h2 class="section-title">Portafolio Completo</h2>
+  
+  <div class="proyecto-destacado flipbook-container-wrapper">
+    <div class="proyecto-header">
+      <h3>Visualizador de Láminas (PDF)</h3>
+      <span>Navegación Interactiva tipo Revista</span>
+    </div>
+
+    <div class="flipbook-viewer">
+      <button class="flip-btn prev-btn" id="prevPage" title="Página anterior">&#10094;</button>
+      
+      <div class="book-pages" id="bookPages">
+        <!-- Las 16 páginas extraídas del PDF del portafolio -->
+        <div class="page active" data-page="1"><img src="pagina1.png" alt="Portada - Portafolio Leites David"></div>
+        <div class="page" data-page="2"><img src="pagina2.png" alt="Índice"></div>
+        <div class="page" data-page="3"><img src="pagina3.png" alt="01 - Sobre mí"></div>
+        <div class="page" data-page="4"><img src="pagina4.png" alt="02 - Vivienda unifamiliar (Memoria)"></div>
+        <div class="page" data-page="5"><img src="pagina5.png" alt="02 - Vivienda unifamiliar (Render)"></div>
+        <div class="page" data-page="6"><img src="pagina6.png" alt="02 - Vivienda unifamiliar (Planos)"></div>
+        <div class="page" data-page="7"><img src="pagina7.png" alt="03 - Edificio de uso mixto (Memoria)"></div>
+        <div class="page" data-page="8"><img src="pagina8.png" alt="03 - Edificio de uso mixto (Render)"></div>
+        <div class="page" data-page="9"><img src="pagina9.png" alt="03 - Edificio de uso mixto (Plantas y Fachada)"></div>
+        <div class="page" data-page="10"><img src="pagina10.png" alt="03 - Edificio de uso mixto (Cortes y Esquemas)"></div>
+        <div class="page" data-page="11"><img src="pagina11.png" alt="04 - Centro Metropolitano de Arte (Memoria)"></div>
+        <div class="page" data-page="12"><img src="pagina12.png" alt="04 - Centro Metropolitano de Arte (Render)"></div>
+        <div class="page" data-page="13"><img src="pagina13.png" alt="04 - Centro Metropolitano de Arte (Planta de acceso)"></div>
+        <div class="page" data-page="14"><img src="pagina14.png" alt="04 - Centro Metropolitano de Arte (Vistas)"></div>
+        <div class="page" data-page="15"><img src="pagina15.png" alt="04 - Centro Metropolitano de Arte (Corte y detalles)"></div>
+        <div class="page" data-page="16"><img src="pagina16.png" alt="Contraportada y QR de contacto"></div>
+      </div>
+
+      <button class="flip-btn next-btn" id="nextPage" title="Página siguiente">&#10095;</button>
+    </div>
+
+    <div class="flipbook-counter">
+      Página <span id="currentPageNum">1</span> de <span id="totalPagesNum">16</span>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX PARA LA GALERÍA -->
 <div id="lightbox" class="lightbox">
   <span class="close">&times;</span>
   <img class="lightbox-content" id="lightbox-img" src="" alt="Visor de proyecto">
@@ -414,9 +539,10 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // 1. LÓGICA DEL LIGHTBOX
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const imagenes = document.querySelectorAll('.img-item img');
+    const imagenes = document.querySelectorAll('.galeria-grid .img-item img');
 
     imagenes.forEach(img => {
       img.addEventListener('click', () => {
@@ -431,6 +557,54 @@
       if (e.target !== lightboxImg) {
         lightbox.classList.remove('active');
         document.body.style.overflow = 'auto'; 
+      }
+    });
+
+    // 2. LÓGICA DEL FLIPBOOK
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+    const currentPageNum = document.getElementById('currentPageNum');
+    const totalPagesNum = document.getElementById('totalPagesNum');
+    
+    let currentIndex = 0;
+    const totalPages = pages.length;
+    totalPagesNum.textContent = totalPages;
+
+    function updateBook() {
+      pages.forEach((page, index) => {
+        if (index === currentIndex) {
+          page.classList.add('active');
+        } else {
+          page.classList.remove('active');
+        }
+      });
+      currentPageNum.textContent = currentIndex + 1;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalPages;
+      updateBook();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalPages) % totalPages;
+      updateBook();
+    });
+
+    // 3. CONTROLES DE TECLADO (ESC para Lightbox / Flechas para Flipbook)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % totalPages;
+        updateBook();
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + totalPages) % totalPages;
+        updateBook();
       }
     });
   });
